@@ -20,7 +20,7 @@ class Minetest < Formula
   end
 
   head do
-    url "https://github.com/tacotexmex/minetest.git"
+    url "https://github.com/tacotexmex/minetest.git", :branch => "diggers"
 
     resource "minetest_game" do
       url "https://github.com/minetest/minetest_game.git", :branch => "master"
