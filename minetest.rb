@@ -35,7 +35,8 @@ class Minetest < Formula
   depends_on "libogg"
   depends_on "libvorbis"
   depends_on "luajit"
-  depends_on :x11
+  depends_on "ncurses"
+  # depends_on :x11
 
   def install
     (buildpath/"games/minetest_game").install resource("minetest_game")
@@ -44,6 +45,7 @@ class Minetest < Formula
     args << "-DCMAKE_BUILD_TYPE=Release" << "-DBUILD_CLIENT=1" << "-DBUILD_SERVER=0"
     args << "-DENABLE_FREETYPE=1" << "-DCMAKE_EXE_LINKER_FLAGS='-L#{Formula["freetype"].opt_lib}'"
     args << "-DENABLE_GETTEXT=1" << "-DCUSTOM_GETTEXT_PATH=#{Formula["gettext"].opt_prefix}"
+    args << "-DENABLE_CURSES=1"
 
     # -ffast-math compiler flag is an issue on Mac
     # https://github.com/minetest/minetest/issues/4274
